@@ -10,7 +10,7 @@ function App() {
 
   const fetchTasks = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/tasks/');
+      const response = await fetch('/api/tasks/');
       const data = await response.json();
       setTasks(data);
     } catch (error) {
@@ -21,7 +21,7 @@ function App() {
   const addTask = async () => {
     if (newTask.trim()) {
       try {
-        await fetch('http://localhost:8000/api/tasks/', {
+        await fetch('/api/tasks/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ text: newTask }),
@@ -36,7 +36,7 @@ function App() {
 
   const deleteTask = async (id) => {
     try {
-      await fetch(`http://localhost:8000/api/tasks/${id}/`, { method: 'DELETE' });
+      await fetch(`/api/tasks/${id}/`, { method: 'DELETE' });
       fetchTasks();
     } catch (error) {
       console.error('Error deleting task:', error);
